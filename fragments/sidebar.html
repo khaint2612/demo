@@ -1,0 +1,59 @@
+<div class="sidebar" data-background-color="white"
+	data-active-color="danger">
+	<!--
+        Tip 1: you can change the color of the sidebar's background using: data-background-color="white | black"
+        Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
+    -->
+	<div class="sidebar-wrapper">
+		<div class="logo">
+			<a th:href="@{/backend/book/list}" class="simple-text"> Books
+				Manager </a>
+		</div>
+		<ul class="nav">
+			<li><a th:href="@{/backend/book/list}"> <i class="ti-book"></i>
+					<p>Books</p>
+			</a></li>
+			<li><a th:href="@{/backend/book/add}"> <i class="ti-plus"></i>
+					<p>Add Book</p>
+			</a></li>
+			<li><a th:href="@{/backend/category/list}"> <i
+					class="ti-folder"></i>
+					<p>Categories</p>
+			</a></li>
+			<li><a th:href="@{/backend/category/add}"> <i
+					class="ti-plus"></i>
+					<p>Add Category</p>
+			</a></li>
+		</ul>
+		<div class="logo">
+			<a th:href="@{/reader/list}" class="simple-text"> Readers Manager
+			</a>
+		</div>
+		<ul class="nav">
+			<li><a th:href="@{/reader/list}"> <i class="ti-book"></i>
+					<p>Reader</p>
+			</a></li>
+			<li><a th:href="@{/reader/add}"> <i class="ti-plus"></i>
+					<p>Add Reader</p>
+			</a></li>
+			<div class="logo">
+				<a th:href="@{/staff/list}" class="simple-text"> Staff Manager </a>
+			</div>
+			<li><a th:href="@{/staff/list}"> <i class="ti-folder"></i>
+					<p>Staff</p>
+			</a></li>
+			<li><a th:href="@{/staff/add}"> <i class="ti-plus"></i>
+					<p>Add staff</p>
+			</a></li>
+			<div class="logo">
+				<a th:href="@{/backend/publishingCompany/list}" class="simple-text"> Publishing Company Manager </a>
+			</div>
+			<li><a th:href="@{/backend/publishingCompany/list}"> <i class="ti-folder"></i>
+					<p>Publishing Company</p>
+			</a></li> 
+			<li><a th:href="@{/backend/publishingCompany/add}"> <i class="ti-plus"></i>
+					<p>Add Publishing Company</p>
+			</a></li>
+		</ul>
+	</div>
+</div>

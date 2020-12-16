@@ -1,0 +1,32 @@
+<div class="card">
+    <div class="header">
+        <h4 class="title">Add new Book</h4>
+        <p class="category">fill out & click save</p>
+    </div>
+    <div class="content">
+        <form th:action="@{/backend/book/save}" method="post" th:object="${book}">
+            <div class="form-group">
+                <input type="hidden" class="form-control" th:field="*{id}"/>
+            </div>
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" id="name" aria-describedby="name" th:field="*{name}" playeholder="Harry Potter and the Deathly Hollows">
+            </div>
+            <div class="form-group">
+                <label for="author">Author</label>
+                <input type="text" class="form-control" id="author" aria-describedby="author" th:field="*{author}" playeholder="Joanne K. Rowling"/>
+            </div>
+            <div class="form-group">
+                <label for="category">Category</label>
+                <select id="category" class="form-control" th:field="*{category}" multiple="multiple">
+                    <option th:each="category : ${categories}" th:text="${category.name}" th:value="${category.id}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="date">Year</label>
+                <input type="text" class="form-control" id="date" th:field="*{publishingYear}"/>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>

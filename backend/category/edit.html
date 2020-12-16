@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<form th:action="@{/backend/category/save}" method="post" th:object="${category}">
+		<input type="text" th:field="*{id}" placeholder="ID" readonly/><br />
+		<input type="text" th:field="*{name}" placeholder="Name"/><br />
+		<input type="submit" value="add"/><br />
+		<input type="button" value="cancel"/>
+	</form>
+</body>
+</html>
