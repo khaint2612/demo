@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<form th:action="@{/backend/poster/save}" method="post" th:object="${poster}">
+		<input type="text" th:field="*{id}" placeholder="ID" /><br />
+		<input type="text" th:field="*{name}" placeholder="Name"/><br />
+		<input type="text" th:field="*{image}" placeholder="Image"/><br />
+		<input type="text" th:field="*{nameAuthor}" placeholder="NameAuthor"/><br />
+		<input type="text" th:field="*{namePublishingCompany}" placeholder="NamePublishingCompany"/><br />
+		<input type="text" th:field="*{page}" placeholder="Page"/><br />
+		<input type="text" th:field="*{publishingYear}" placeholder="PublishingYear"/><br />
+		<input type="text" th:field="*{synopsis}" placeholder="Synopsis"/><br />
+		<input type="text" th:field="*{typeOfbook}" placeholder="TypeOfbook"/><br />
+		<input type="submit" value="add"/><br />
+		<input type="button" value="cancel"/>
+	</form>
+</body>
+</html>

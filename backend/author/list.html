@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form th:action="@{/backend/author/find}">
+	Name:
+	<input type="text" name="name" placeholder="Name" />
+	<input type="submit" value="Find" />
+</form>
+<table>
+	<tr>
+		<td>ID</td>
+		<td>Name</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr th:each="item: ${authors}">
+		<td th:text="${item.id}"></td>
+		<td th:text="${item.name}"></td>
+	
+		<td>
+			<a th:href="@{'/backend/author/edit/' + ${item.id}}">Edit</a>
+			<a th:href="@{'/backend/author/delete/' + ${item.id}}">Delete</a>
+		</td>
+	</tr>
+</table>
+</body>
+</html>

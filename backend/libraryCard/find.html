@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>List All Reader</h1>
+	<form th:action="@{/reader/find}">
+		<input type="text" name="name" placeholder="Name"> <br>
+		<input type="submit" value="Find">
+		
+		
+	</form>
+	<hr>
+	<table>
+		<tr>
+			<td>libraryCard ID</td>
+			<td>Time Created</td>
+			<td>Expiry Date</td>
+			<td>Reader ID</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr th:each="item : ${libraryCard}">
+			<td th:text="${item.libraryCardId}"></td>
+			<td th:text="${item.timeCreated}"></td>
+			<td th:text="${item.expiryDate}"></td>
+			<td th:text="${item.reader.readerId}"></td>
+			<td>
+				<a th:href="@{'/libraryCard/edit/' + ${item.libraryCardId}}">Edit</a> |
+				<a th:href="@{'/libraryCard/delete/' + ${item.libraryCardId}}">Delete</a> 
+			</td>
+		</tr>
+	</table>
+</body>
+</html>
