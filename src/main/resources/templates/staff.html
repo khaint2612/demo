@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="fragments/head"></th:block>
+<body>
+	<!-- Page Wrapper -->
+	<div id="wrapper">
+		<th:block th:include="fragments/sidebar"></th:block>
+		<!-- Main Panel -->
+		<div class="main-panel">
+			<th:block th:include="fragments/navbar"></th:block>
+			<!-- Begin Page Content -->
+			<div class="content">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-12">
+						<p><label th:text="'Hello: '+ ${session.USERNAME}"></label><a href="logout">Logout</a></p>
+							<div class="card">
+								<div class="header">
+									<h4 class="title">Add new Book</h4>
+									<p class="category">fill out & click save</p>
+								</div>
+								<div class="content">
+									<form th:action="${ACTION}" th:object="${STAFF}" method="post">
+										<div class="form-group">
+											<label>Staff ID</label> <input type="text" th:field="*{id}"
+												class="form-control" name="id" placeholder="Enter id"
+												id="id" value="" required="required">
+										</div>
+										<div class="form-group">
+											<label>FullName</label> <input type="text"
+												th:field="*{fullname}" class="form-control" name="name"
+												placeholder="Enter name" id="name" value=""
+												required="required">
+										</div>
+										<div class="form-group">
+											<label for="id">Gender</label><input id="id" type="text"
+												aria-describedby="name" class="form-control"
+												th:field="*{gender}" />
+										</div>
+										<div class="form-group">
+											<label>IDCard</label> <input type="text" class="form-control"
+												name="idcard" placeholder="Enter idcard"
+												th:field="*{idcard}" id="idcard" value="" required>
+										</div>
+										<div class="form-group">
+											<label>Email</label> <input type="email" class="form-control"
+												name="email" placeholder="Enter email" th:field="*{email}"
+												id="email" value="" required>
+										</div>
+										<div class="form-group">
+											<label>Phone</label> <input type="tel" class="form-control"
+												name="phone" placeholder="Enter phone" id="phone"
+												th:field="*{phone}" value="" required="required">
+										</div>
+										<div class="form-group">
+											<label>Address</label> <input type="text"
+												class="form-control" name="address"
+												placeholder="Enter address" id="address"
+												th:field="*{address}" value="" required="required" min="1">
+										</div>
+										<button type="submit" class="btn btn-primary">Save</button>
+										<button type="reset" class="btn btn-primary">Cancel</button>
+										<a class="btn btn-primary" href="/staffs/list">Display
+											List Staff</a>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- /.container-fluid -->
+				</div>
+				<!-- /.content -->
+			</div>
+			<!-- End of Main Panel -->
+			<th:block th:include="fragments/footer"></th:block>
+		</div>
+		<th:block th:include="fragments/scripts"></th:block>
+</body>
+</html>

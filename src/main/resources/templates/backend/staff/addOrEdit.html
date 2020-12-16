@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="fragments/head"></th:block>
+<body>
+	<!-- Page Wrapper -->
+	<div id="wrapper">
+		<th:block th:include="fragments/sidebar"></th:block>
+		<!-- Main Panel -->
+		<div class="main-panel">
+			<th:block th:include="fragments/navbar"></th:block>
+			<!-- Begin Page Content -->
+			<div class="content">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="card">
+								<div class="header">
+									<h4 class="title">Add new Staff</h4>
+									<p class="category">fill out & click save</p>
+								</div>
+								<div class="content">
+									<form th:action="@{/staff/saveOrUpdate}" method="post"
+										th:object="${staffs}">
+										<div class="form-group">
+
+											<label>Staff ID</label> <input class="form-control"
+												th:field="*{id}" placeholder="Staff ID">
+										</div>
+										<div class="form-group">
+											<label>Name</label> <input class="form-control"
+												th:field="*{name}" type="text" placeholder="name">
+										</div>
+										<div class="form-group ">
+											<label>Address</label> <input class="form-control"
+												th:field="*{address}" type="text" placeholder="address">
+										</div>
+										<div class="form-group ">
+											<label>Number Phone</label> <input class="form-control"
+												th:field="*{phone}" type="text"
+												placeholder="number Phone">
+										</div>
+										<div class="form-group ">
+											<label>Email</label> <input class="form-control"
+												th:field="*{email}" type="text" placeholder="email">
+										</div>
+										<div class="form-group ">
+											<label>Id Card</label> <input class="form-control"
+												th:field="*{idcard}" type="text" placeholder="ID Card">
+										</div>
+										<div class="form-group">
+											<label>Gender</label>
+											<div class="radio">
+												<!--value = 1 => Nam| 0 =>Nu -->
+												<label class="checkbox-inline"> <input type="checkbox"
+													th:field="*{gender}" name="gender" value="1" id="gender1">Male
+												</label> <label class="checkbox-inline"> <input type="radio"
+													th:field="*{gender}" name="gender" checked="checked"
+													value="0" id="gender2">Female
+												</label>
+											</div>
+										</div>
+										<input type="submit" class="btn btn-primary" value="Add"
+											style="margin-right: 50px"> <a
+											class="btn btn-primary" th:href="@{/staff/find}">List All
+											Staff</a>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+</html>

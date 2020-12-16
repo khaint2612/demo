@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="fragments/head"></th:block>
+<body>
+	<!-- Page Wrapper -->
+	<div id="wrapper">
+		<th:block th:include="fragments/sidebar"></th:block>
+		<!-- Main Panel -->
+		<div class="main-panel">
+			<th:block th:include="fragments/navbar"></th:block>
+			<!-- Begin Page Content -->
+			<div class="content">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-12">
+						<p><label th:text="'Hello: '+ ${session.USERNAME}"></label><a href="logout">Logout</a></p>
+							<div class="card">
+								<div class="header col-md-6">
+									<h4 class="title">Books</h4>
+									<p class="category">shows all available books</p>
+								</div>
+								<div class="content table-responsive table-full-width">
+									<table class="table table-striped">
+										<thead>
+											<tr>
+												<th>UserName</th>
+												<th>Password</th>
+												<th>FullName</th>
+												<th>Age</th>
+												<th>Gender</th>
+												<th>Action</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="item: ${USERS}">
+												<td th:text="${item.username}"></td>
+												<td th:text="${item.password}"></td>
+												<td th:text="${item.fullname}"></td>
+												<td th:text="${item.age}"></td>
+												<td><span th:text="${item.gender}? 'Nam': 'Nu' "></span>
+												</td>
+												<td><a class="btn btn-primary btn-sm"
+													th:href="@{'/edit/'+ ${item.username}}">Edit</a> | <a
+													class="btn btn-danger btn-sm"
+													th:href="@{'/delete/'+ ${item.username}}">Del</a></td>
+											</tr>
+									</table>
+								</div>
+							</div>
+							<!-- /.container-fluid -->
+						</div>
+						<!-- /.content -->
+					</div>
+					<!-- End of Main Panel -->
+					<th:block th:include="fragments/footer"></th:block>
+				</div>
+				<th:block th:include="fragments/scripts"></th:block>
+</body>
+</html>
