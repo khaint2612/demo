@@ -34,6 +34,7 @@
 										<thead>
 											<tr>
 												<th scope="col">Staff ID</th>
+												<th scope="col">Staff ID</th>
 												<th scope="col">Name</th>
 												<th scope="col">Gender</th>
 												<th scope="col">Address</th>
@@ -45,6 +46,7 @@
 										</thead>
 										<tbody>
 											<tr th:each="item: ${staffs}">
+												<td th:text="${item.photo}"></td>
 												<td th:text="${item.id}"></td>
 												<td th:text="${item.name}"></td>
 												<td><span th:text="${item.gender}? 'Nam': 'Nu'"></span></td>

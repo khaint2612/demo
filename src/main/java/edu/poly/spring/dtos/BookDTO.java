@@ -3,6 +3,9 @@ package edu.poly.spring.dtos;
 import java.io.Serializable;
 import java.util.Set;
 
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -14,37 +17,58 @@ import edu.poly.spring.models.Category;
 import edu.poly.spring.models.PublishingCompany;
 
 public class BookDTO implements Serializable {
-	@Length(max = 6)
+
 	private String id;
 	
-	@NotNull
-	@Length(max = 50, min = 5,message = "Tên không được quá 50 ký tự và phải nhiều hơn 5 ký tự")
-	@NotEmpty(message = "Tên không được để trống")
 	private String name;
-	
-	@NotNull
-	private MultipartFile image;
-	@Length(max = 50, min = 5, message = "Tên gốc không được quá 50 ký tự và phải nhiều hơn 5 ký tự")
-	@NotEmpty(message = "Tên gốc không được để trống")
+
 	private String originName;
-	@NotNull
-	private Set<Author> author;
-	private Integer year;
-	@NotNull
-	private Set<Category> category;
+
+    private Integer year;
+	
+	
 	private String description;
-	public String getDescription() {
-		return description;
+
+	private  MultipartFile photo;
+
+	public BookDTO(String id, String name, String originName, Integer year, String description, MultipartFile photo) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.originName = originName;
+		this.year = year;
+		this.description = description;
+		this.photo = photo;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public BookDTO() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
-	private PublishingCompany publishingCompany;
 	public String getId() {
 		return id;
 	}
-	
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getOriginName() {
+		return originName;
+	}
+
+	public void setOriginName(String originName) {
+		this.originName = originName;
+	}
+
 	public Integer getYear() {
 		return year;
 	}
@@ -53,47 +77,19 @@ public class BookDTO implements Serializable {
 		this.year = year;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public String getDescription() {
+		return description;
 	}
-	public String getName() {
-		return name;
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
-	public void setName(String name) {
-		this.name = name;
+
+	public MultipartFile getPhoto() {
+		return photo;
 	}
-	public MultipartFile getImage() {
-		return image;
+
+	public void setPhoto(MultipartFile photo) {
+		this.photo = photo;
 	}
-	public void setImage(MultipartFile image) {
-		this.image = image;
-	}
-	public String getOriginName() {
-		return originName;
-	}
-	public void setOriginName(String originName) {
-		this.originName = originName;
-	}
-	public Set<Author> getAuthor() {
-		return author;
-	}
-	public void setAuthor(Set<Author> author) {
-		this.author = author;
-	}
-	public Set<Category> getCategory() {
-		return category;
-	}
-	public void setCategory(Set<Category> category) {
-		this.category = category;
-	}
-	public PublishingCompany getPublishingCompany() {
-		return publishingCompany;
-	}
-	public void setPublishingCompany(PublishingCompany publishingCompany) {
-		this.publishingCompany = publishingCompany;
-	}
-	public BookDTO() {
-		super();
-	}
-	
 }

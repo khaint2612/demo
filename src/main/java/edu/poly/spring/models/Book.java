@@ -30,13 +30,7 @@ public class Book implements Serializable{
 	private String originName;
 	@Column
     private Integer year;
-	public String getImage() {
-		return image;
-	}
-	public void setImage(String image) {
-		this.image = image;
-	}
-
+	
 	@Lob
 	private String description;
 	@Column
@@ -70,7 +64,13 @@ public class Book implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 	
 	public String getDescription() {
 		return description;
