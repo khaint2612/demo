@@ -44,16 +44,16 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr th:each="item: ${staffs}">
+											<tr th:each="item: ${staff}">
 												<td th:text="${item.id}"></td>
 												<td th:text="${item.name}"></td>
 												<td><span th:text="${item.gender}? 'Nam': 'Nu'"></span></td>
 												<td th:text="${item.address}"></td>
-												<td th:text="${item.phone}"></td>
+												<td th:text="${item.numberPhone}"></td>
 												<td th:text="${item.email}"></td>
-												<td th:text="${item.idcard}"></td>
+												<td th:text="${item.idCard}"></td>
 												<td><a class="btn btn-primary"
-													th:href="@{'/staff/edit/' + ${item.id}}">Edit</a> | <a
+													th:href="@{'/staff/edit/' + ${item.id}}">Edit</a>  <a
 													class="btn btn-danger"
 													th:href="@{'/staff/delete/' + ${item.id}}">Delete</a></td>
 											</tr>

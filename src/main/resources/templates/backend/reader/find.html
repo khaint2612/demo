@@ -19,7 +19,8 @@
 									<h4 class="title">Reader</h4>
 									<p class="category">shows all available readers</p>
 								</div>
-								<form style="margin-bottom: 20px" th:action="@{/reader/find}">
+								<form style="margin-bottom: 20px"
+									th:action="@{/backend/reader/find}">
 									<div class="form-inline">
 
 										<div class="col-sm-8">
@@ -56,17 +57,19 @@
 										<tbody>
 											<tr th:each="item : ${reader}">
 												<td th:text="${item.readerId}"></td>
-												<td th:src="@{'/getimage/' + ${item.readerId}}" th:alt="${item.photo}"></td>
+												<td th:src="@{'/getimage/' + ${item.readerId}}"
+													th:alt="${item.photo}"></td>
 												<td th:text="${item.name}"></td>
 
 												<td><span th:text="${item.gender}? 'Nam': 'Nu'"></span></td>
 												<td th:text="${item.email}"></td>
 												<td th:text="${item.address}"></td>
 												<td th:text="${item.birthday}"></td>
-												<td th:text="${item.staff.staffId}"></td>
-												<td><a th:href="@{'/reader/edit/' + ${item.readerId}}">Edit</a>
-													| <a th:href="@{'/reader/delete/' + ${item.readerId}}">Delete</a>
-												</td>
+												<td th:text="${item.staff.id}"></td>
+												<td><a th:href="@{'/reader/edit/' + ${item.readerId}}"
+													class="btn btn-default">Edit</a>  <a
+													th:href="@{'/reader/delete/' + ${item.readerId}}"
+													class="btn btn-danger">Delete</a></td>
 										</tbody>
 									</table>
 								</div>

@@ -22,7 +22,7 @@
 									<form th:action="@{/backend/book/save}" method="post"
 										th:object="${book}">
 										<div class="form-group">
-											<input type="text"
+											<input type="hidden"
 												aria-describedby="id" class="form-control"
 												th:field="*{id}" />
 										</div>
@@ -55,7 +55,7 @@
 										<div class="form-group">
 											<label for="publishingCompany">PublishingCompany</label><select id="publishingCompany"
 												class="form-control" th:field="*{publishingCompany}"
-												multiple="multiple">
+												>
 												<option th:each="publishingCompany : ${publishingCompany}"
 													th:text="${publishingCompany.name}" th:value="${publishingCompany.id}"></option>
 											</select>

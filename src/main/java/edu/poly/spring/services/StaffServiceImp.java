@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import edu.poly.spring.models.Staffs;
+import edu.poly.spring.models.Staff;
 import edu.poly.spring.repositories.StaffRepository;
 
 @Service
@@ -16,17 +16,17 @@ public class StaffServiceImp implements StaffService{
 	private StaffRepository staffRepository;
 
 	@Override
-	public Staffs save(Staffs entity) {
+	public Staff save(Staff entity) {
 		return staffRepository.save(entity);
 	}
 
 	@Override
-	public List<Staffs> saveAll(List<Staffs> entities) {
-		return (List<Staffs>)staffRepository.saveAll(entities);
+	public List<Staff> saveAll(List<Staff> entities) {
+		return (List<Staff>)staffRepository.saveAll(entities);
 	}
 
 	@Override
-	public Optional<Staffs> findById(String id) {
+	public Optional<Staff> findById(String id) {
 		return staffRepository.findById(id);
 	}
 
@@ -36,16 +36,16 @@ public class StaffServiceImp implements StaffService{
 	}
 
 	@Override
-	public List<Staffs> findAll() {
-		return (List<Staffs>)staffRepository.findAll();
+	public Iterable<Staff> findAll() {
+		return staffRepository.findAll();
 	}
 
 	@Override
-	public List<Staffs> findAllById(List<String> ids) {
-		return (List<Staffs>)staffRepository.findAllById(ids);
+	public List<Staff> findAllById(List<String> ids) {
+		return (List<Staff>)staffRepository.findAllById(ids);
 	}
 
-	public List<Staffs> findByNameLikeOrderByName(String name) {
+	public List<Staff> findByNameLikeOrderByName(String name) {
 		return staffRepository.findByNameLikeOrderByName("%"+ name +"%");
 	}
 
@@ -60,12 +60,12 @@ public class StaffServiceImp implements StaffService{
 	}
 
 	@Override
-	public void delete(Staffs entity) {
+	public void delete(Staff entity) {
 		staffRepository.delete(entity);
 	}
 
 	@Override
-	public void deleteAll(List<Staffs> entities) {
+	public void deleteAll(List<Staff> entities) {
 		staffRepository.deleteAll(entities);
 	}
 

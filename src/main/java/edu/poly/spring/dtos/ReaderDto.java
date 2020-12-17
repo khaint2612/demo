@@ -13,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.sun.istack.NotNull;
 
-import edu.poly.spring.models.Staffs;
+import edu.poly.spring.models.Staff;
 
 public class ReaderDto implements Serializable {
 
@@ -42,6 +42,7 @@ public class ReaderDto implements Serializable {
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date birthday;
 
+	@NotNull
 	private String staffId;
 
 	public String getReaderId() {

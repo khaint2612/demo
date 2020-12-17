@@ -19,6 +19,7 @@ import edu.poly.spring.models.UserDAO;
 import edu.poly.spring.services.UserService;
 
 @Controller
+@RequestMapping("/backend/user")
 public class UserController {
 	
 	@Autowired
@@ -27,13 +28,13 @@ public class UserController {
 	@Autowired
 	User _userBean;
 	
-	@GetMapping("/")
+	@GetMapping("/add")
 	public String addOrEdit(ModelMap model) {
 		User u = new User();
 //		u.setUsername("TaiTD");
 		model.addAttribute("USER", u);
 		model.addAttribute("ACTION","saveOrUpdate");
-		return "register-user";
+		return "backend/user/add";
 	}
 	@PostMapping("/saveOrUpdate")
 	public String saveOrUpdate(ModelMap model, @ModelAttribute("USER") User user) {
@@ -41,25 +42,25 @@ public class UserController {
 //		dao.save(user);
 //		System.out.println("size:"+dao.getAll().size());
 		UserService.save(user);
-		return "register-user";
+		return "backend/user/add";
 	}
 	
 	@RequestMapping("list")
 	public String list(ModelMap model, HttpSession session) {
 //		UserDAO dao = new UserDAO();
 //		model.addAttribute("USERS", dao.getAll());
-		if (session.getAttribute("USERNAME") !=null) {
+		if (session.getAttribute("Email") !=null) {
 			model.addAttribute("USERS", UserService.findAll());
-			return "view-user";	
+			return "backend/user/list";	
 		}
 		return "login";
 	}
-	@RequestMapping("/edit/{username}")
+	@RequestMapping("/edit/{email}")
 	public String edit(ModelMap model, 
-			@PathVariable(name="username") String username){
+			@PathVariable(name="email") String email){
 //		UserDAO dao = new UserDAO();
-//		User u = dao.findByUsername(username);
-		Optional<User> u = UserService.findById(username);
+//		User u = dao.findByUsername(email);
+		Optional<User> u = UserService.findById(email);
 		if (u.isPresent()) {
 			model.addAttribute("USER", u.get());
 		}else {
@@ -67,17 +68,17 @@ public class UserController {
 		}
 		
 		model.addAttribute("ACTION","/saveOrUpdate");
-		return "register-user";
+		return "backend/user/add";
 	}
 	
-	@RequestMapping("/delete/{username}")
+	@RequestMapping("/delete/{email}")
 	public String delete(ModelMap model, 
-			@PathVariable(name="username") String username){
+			@PathVariable(name="email") String email){
 //		UserDAO dao = new UserDAO();
-//		dao.delete(username);
-		UserService.deleteById(username);
+//		dao.delete(email);
+		UserService.deleteById(email);
 		model.addAttribute("USERS", UserService.findAll());
-		return "view-user";
+		return "backend/user/list";
 	}
 	//=========================================================
 	
@@ -87,31 +88,31 @@ public class UserController {
 	}
 	
 	@PostMapping("checklogin")
-	public String checkLogin(ModelMap model ,@RequestParam("username")String username, 
+	public String checkLogin(ModelMap model ,@RequestParam("email")String email, 
 			@RequestParam("password") String password,
 			HttpSession session) {
-//		if (_userBean.getUsername().equals(username)&& _userBean.getPassword().equals(password)) {
+//		if (_userBean.getUsername().equals(email)&& _userBean.getPassword().equals(password)) {
 //			System.out.println("Login thanh cong");
 //			return "index";
 //		}else {
 //			System.out.println("Login that bai");
 //		}
 		
-		if (UserService.checkLogin(username, password)) {
+		if (UserService.checkLogin(email, password)) {
 			System.out.println("Login thanh cong");
-			session.setAttribute("USERNAME", username);
+			session.setAttribute("Email", email);
 			model.addAttribute("USERS", UserService.findAll());
-			return "view-user";
+			return "backend/user/list";
 		}else {
 			System.out.println("Login that bai");
-			model.addAttribute("ERROR", "Username or password not exist");
+			model.addAttribute("ERROR", "Email or password not exist");
 		}
 		return "login";
 	}
 	
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
-		session.removeAttribute("USERNAME");
+		session.removeAttribute("Email");
 		return "redirect:/login";
 	}
 }

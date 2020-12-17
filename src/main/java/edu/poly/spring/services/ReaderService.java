@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import edu.poly.spring.models.Reader;
-import edu.poly.spring.models.Staffs;
+import edu.poly.spring.models.Staff;
 
 public interface ReaderService {
 
@@ -30,7 +30,7 @@ public interface ReaderService {
 
 	Reader save(Reader entity);
 
-	List<Staffs> findAllStaff();
+	List<Staff> findAllStaff();
 
 	List<Reader> findByNameLikeOrderByName(String name);
 

@@ -18,28 +18,23 @@
 									<h4 class="title">Add new Reader</h4>
 									<p class="category">fill out & click save</p>
 								</div>
-								<div class="content">
-									<div th:if="${message != null}">
-										<span th:text="${message}"></span>
-									</div>
 									<form th:action="@{/backend/reader/saveOrUpdate}" method="post"
-										th:object="${reader}" >
+										th:object="${reader}">
 
-									<!-- 	<div class="form-group">
+										<div class="form-group">
 											<label for="category">Staff</label> <select id="category"
-												class="form-control" th:field="*{staffId}">
+												class="form-control" th:field="*{staff}">
 												<option th:each="staff: ${staff}"
-													th:value="${staff.staffId}" th:text="${staff.name}"></option>
-											</select> <span th:if="${#fields.hasErrors('staffId')}"
-												th:errors="*{staffId}"> Empty Firstname </span>
-										</div> -->
+													th:value="${staff.id}" th:text="${staff.name}"></option>
+											</select>
+										</div>
 										<div class="form-group">
 
 											<label for="id">ReaderId</label><input id="id" type="text"
 												aria-describedby="name" class="form-control"
-												th:field="*{id}" /> <span
-												th:if="${#fields.hasErrors('id')}"
-												th:errors="*{id}"> Empty id </span>
+												th:field="*{readerId}" /> <span
+												th:if="${#fields.hasErrors('readerId')}"
+												th:errors="*{readerId}"> Empty readerId </span>
 										</div>
 										<div class="form-group">
 											<label for="id">Name</label><input id="id" type="text"
@@ -56,8 +51,10 @@
 										<div class="form-group">
 											<label for="id">Photo</label><input id="id" type="file"
 												aria-describedby="name" class="form-control"
-												th:field="*{photo}">
-												</div>
+												th:field="*{photo}" /> <span
+												th:if="${#fields.hasErrors('photo')}" th:errors="*{photo}">
+												Empty image </span>
+										</div>
 										<div class="form-group">
 											<label for="id">Birthday</label><input id="id" type="text"
 												aria-describedby="name" class="form-control"
@@ -76,7 +73,7 @@
 												th:field="*{address}" />
 										</div>
 										<button type="submit" class="btn btn-primary">Save</button>
-										<a th:href="@{/reader/find}">List All Reader</a>
+										<a th:href="@{/backend/reader/find}">List All Reader</a>
 									</form>
 
 								</div>

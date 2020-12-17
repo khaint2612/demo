@@ -14,37 +14,38 @@
 					<div class="row">
 						<div class="col-md-12">
 							<div class="card">
-								<form style="margin-bottom: 20px"
-									th:action="@{/backend/publishingCompany/find}">
-									<div class="form-inline">
-										<div class="col-sm-8">
-											<input class="form-control" type="text" name="name"
-												placeholder="Name" /> <input class="btn btn-primary"
-												type="submit" value="Find" />
-										</div>
-									</div>
-								</form>
-								<div class="header col-md-6">
-									<h4 class="title">Publishing Company</h4>
-									<p class="category">shows all available Publishing Company</p>
+								<div class="header">
+									<h4 class="title">User</h4>
+									<p class="category">shows all available</p>
 								</div>
+								<p>
+									<label th:text="'Hello: '+ ${session.USERNAME}"></label><a
+										href="logout">Logout</a>
+								</p>
 								<div class="content table-responsive table-full-width">
 									<table class="table table-striped">
 										<thead>
-											<tr>
-												<th>ID</th>
-												<th>Name</th>
-												<th>&nbsp;</th>
-											</tr>
+											<th>Email</th>
+											<th>Password</th>
+											<th>Create Day</th>
+											<th>End Day</th>
+											<th>Role</th>
+											<th>Status</th>
+											<th></th>
+											<th></th>
 										</thead>
 										<tbody>
-											<tr th:each="item: ${publishingCompanies}">
-												<td th:text="${item.id}"></td>
-												<td th:text="${item.name}"></td>
+											<tr th:each="item: ${USERS}">
+												<td th:text="${item.email}"></td>
+												<td th:text="${item.password}"></td>
+												<td th:text="${item.createDay}"></td>
+												<td th:text="${item.endDay}"></td>
+												<td th:text="${item.status}"></td>
 												<td><a
-													th:href="@{'/backend/publishingCompany/edit/' + ${item.id}}"
-													class="btn btn-default">Edit</a> <a
-													th:href="@{'/backend/publishingCompany/delete/' + ${item.id}} "
+													th:href="@{'/backend/user/edit/' + ${item.email}}"
+													class="btn btn-default">Edit</a></td>
+												<td><a
+													th:href="@{'/backend/usery/delete/' + ${item.email}}"
 													class="btn btn-danger">Delete</a></td>
 											</tr>
 										</tbody>
@@ -59,11 +60,5 @@
 					<th:block th:include="fragments/footer"></th:block>
 				</div>
 				<th:block th:include="fragments/scripts"></th:block>
-			</div>
-		</div>
-	</div>
-
-</body>
-</html>
 </body>
 </html>

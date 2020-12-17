@@ -1,94 +1,96 @@
-<div class="sidebar" data-background-color="white" data-active-color="danger">
-    <!--
+<div class="sidebar" data-background-color="white"
+	data-active-color="danger">
+	<!--
         Tip 1: you can change the color of the sidebar's background using: data-background-color="white | black"
         Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
     -->
-    <div class="sidebar-wrapper">
-        <div class="logo">
-            <a th:href="@{/backend/book/list}" class="simple-text">
-                Library Manager
-            </a>
-        </div>
-        <ul class="nav">
-            <li>
-                <a th:href="@{/backend/book/list}">
-                    <i class="ti-book"></i>
-                    <p>Books</p>
-                </a>
-            </li>
-            <li>
-                <a th:href="@{/backend/book/add}">
-                    <i class="ti-plus"></i>
-                    <p>Add Book</p>
-                </a>
-            </li>
-            <li>
-                <a th:href="@{/backend/category/list}">
-                    <i class="ti-folder"></i>
-                    <p>Categories</p>
-                </a>
-            </li>
-            <li>
-                <a th:href="@{/backend/category/add}">
-                    <i class="ti-plus"></i>
-                    <p>Add Category</p>
-                </a>
-            </li>
-            <li>
-                <a th:href="@{/backend/author/list}">
-                    <i class="ti-folder"></i>
-                    <p>Authors</p>
-                </a>
-            </li>
-            <li>
-                <a th:href="@{/backend/author/add}">
-                    <i class="ti-plus"></i>
-                    <p>Add Author</p>
-                </a>
-            </li>
-            <li>
-                <a th:href="@{/backend/reader/list}">
-                    <i class="ti-book"></i>
-                    <p>Reader</p>
-                </a>
-            </li>
-            <li>
-                <a th:href="@{/backend/reader/add}">
-                    <i class="ti-plus"></i>
-                    <p>Add Reader</p>
-                </a>
-            </li>
-            <li>
-                <a th:href="@{/staff/list}">
-                    <i class="ti-book"></i>
-                    <p>Staff</p>
-                </a>
-            </li>
-            <li>
-                <a th:href="@{/staff/add}">
-                    <i class="ti-plus"></i>
-                    <p>Add Staff</p>
-                </a>
-            </li>
-            <li>
-                <a th:href="@{/list}">
-                    <i class="ti-book"></i>
-                    <p>User</p>
-                </a>
-            </li>
-            <li>
-                <a th:href="@{/}">
-                    <i class="ti-plus"></i>
-                    <p>Add User</p>
-                </a>
-            </li>
-            <li>
+	<div class="sidebar-wrapper">
+		<div class="logo">
+			<a th:href="@{/backend/book/list}" class="simple-text"> Library
+				Manager </a>
+		</div>
+		<ul class="nav">
+			<!-- Book -->
+			<li><a th:href="@{/backend/book/list}"> <i class="ti-book"></i>
+					<p>Books</p>
+			</a></li>
+			<li><a th:href="@{/backend/book/add}"> <i class="ti-plus"></i>
+					<p>Add Book</p>
+			</a></li>
+			<!-- Thể loại -->
+			<li><a th:href="@{/backend/category/list}"> <i
+					class="ti-folder"></i>
+					<p>Categories</p>
+			</a></li>
+			<li><a th:href="@{/backend/category/add}"> <i
+					class="ti-plus"></i>
+					<p>Add Category</p>
+			</a></li>
+			<!-- Tác giả -->
+			<li><a th:href="@{/backend/author/list}"> <i
+					class="ti-write"></i>
+					<p>Authors</p>
+			</a></li>
+			<li><a th:href="@{/backend/author/add}"> <i class="ti-plus"></i>
+					<p>Add Author</p>
+			</a></li>
+			<li><a th:href="@{/backend/publishingCompany/list}"> <i
+					class="ti-truck"></i>
+					<p>Publishing Company</p>
+			</a></li>
+			<li><a th:href="@{/backend/publishingCompany/add}"> <i class="ti-plus"></i>
+					<p>Add Publishing Company</p>
+			</a></li>
+
+			<!-- Đọc giả -->
+			<li><a th:href="@{/backend/reader/list}"> <i
+					class="ti-hand-open"></i>
+					<p>Reader</p>
+			</a></li>
+			<li><a th:href="@{/backend/reader/add}"> <i class="ti-plus"></i>
+					<p>Add Reader</p>
+			</a></li>
+			<!-- Nhân viên -->
+			<li><a th:href="@{/backend/staff/list}"> <i
+					class="ti-headphone"></i>
+					<p>Staff</p>
+			</a></li>
+			<li><a th:href="@{/backend/staff/add}"> <i class="ti-plus"></i>
+					<p>Add Staff</p>
+			</a></li>
+			<!-- Tài khoản -->
+			<li><a th:href="@{/backend/user/list}"> <i class="ti-user"></i>
+					<p>User</p>
+			</a></li>
+			<li><a th:href="@{/backend/user/add}"> <i class="ti-plus"></i>
+					<p>Add User</p>
+			</a></li>
+			<!-- Thư viện -->
+			<li><a th:href="@{/backend/library/list}"> <i
+					class="ti-layout-list-post"></i>
+					<p>Library</p>
+			</a></li>
+			<li><a th:href="@{/backend/library/add}"> <i class="ti-plus"></i>
+					<p>Add Library</p>
+			</a></li>
+			<!-- Thống kê -->
+			<li><a th:href="@{/backend/statistical/list}"> <i
+					class="ti-view-list-alt"></i>
+					<p>Statistical</p>
+			</a></li>
+			<!-- hóa đơn -->
+			<!-- <li>
                 <a th:href="@{/backend/statistical/list}">
-                    <i class="ti-plus"></i>
-                    <p>Statistical</p>
+                    <i class="ti-shopping-cart"></i>
+                    <p>Bill</p>
                 </a>
             </li>
-            
-        </ul>
-    </div>
+            <li>
+                <a th:href="@{/backend/statistical/add}">
+                    <i class="ti-view-list-alt"></i>
+                    <p>Add bill</p>
+                </a>
+            </li> -->
+		</ul>
+	</div>
 </div>

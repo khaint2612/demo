@@ -18,14 +18,14 @@ import edu.poly.spring.services.LibraryService;
 
 
 @Controller
-@RequestMapping("library")
+@RequestMapping("/backend/library")
 public class LibraryController {
 	@Autowired
 	private LibraryService  libraryService;
 	@GetMapping("/add")
 	public String add(ModelMap model) {
 		model.addAttribute("library", new Library());
-		return"library/addOrEdit";		
+		return"backend/library/addOrEdit";		
 	} 
 	@PostMapping("/saveOrUpdate")
 	public String saveOrUpdate(ModelMap model, Library library) {
@@ -33,15 +33,11 @@ public class LibraryController {
 		
 		model.addAttribute(library);
 		
-		return"library/addOrEdit";
-		 
-	
-		
+		return list(model);
 	}
 	@GetMapping("/edit/{id}")
 	public String edit(ModelMap model,
 			@PathVariable(name="id") String id) {
-
 		Optional<Library> de = libraryService.findById(id);
 		if(de.isPresent()) {
 			model.addAttribute("library", de.get());	
@@ -49,20 +45,20 @@ public class LibraryController {
 			model.addAttribute("library", new Library());
 		}
 		model.addAttribute("ACTION" , "/library/saveOrUpdate");
-		return "library/addOrEdit";
+		return "/backend/library/addOrEdit";
 	}
 	@RequestMapping("/delete/{id}")
 	public String deleteLBR(ModelMap model,
 			@PathVariable(name="id") String id) {
 		libraryService.deleteById(id);
 		model.addAttribute("LIBRARY", libraryService.findAll());
-		return "library/list";
+		return "/backend/library/list";
 	}
 	@RequestMapping("/list")
-	public String list(ModelMap model,HttpSession session) {
+	public String list(ModelMap model) {
 //		if(session.getAttribute("USERNAME") != null) {
 			model.addAttribute("LIBRARY",libraryService.findAll());
-			return "library/list";
+			return "/backend/library/list";
 		}
 //		return "login";
 //	

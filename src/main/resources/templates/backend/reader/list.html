@@ -34,7 +34,7 @@
 										</thead>
 										<tbody>
 											<tr th:each="item : ${reader}">
-												<td th:text="${item.id}"></td>
+												<td th:text="${item.readerId}"></td>
 												<td th:text="${item.photo}"></td>
 												<td th:text="${item.name}"></td>
 
@@ -42,9 +42,9 @@
 												<td th:text="${item.email}"></td>
 												<td th:text="${item.address}"></td>
 												<td th:text="${item.birthday}"></td>
-												<td th:text="${item.staffs.staffId}"></td>
-												<td><a th:href="@{'/reader/edit/' + ${item.id}}">Edit</a>
-													| <a th:href="@{'/reader/delete/' + ${item.id}}">Delete</a>
+												<td th:text="${item.staff.staffId}"></td>
+												<td><a th:href="@{'/reader/edit/' + ${item.readerId}}">Edit</a>
+													| <a th:href="@{'/reader/delete/' + ${item.readerId}}">Delete</a>
 												</td>
 											</tr>
 										</tbody>

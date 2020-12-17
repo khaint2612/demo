@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import edu.poly.spring.models.Reader;
-import edu.poly.spring.models.Staffs;
+import edu.poly.spring.models.Staff;
 
 @Repository
 public interface ReaderRepository extends CrudRepository<Reader, String> {

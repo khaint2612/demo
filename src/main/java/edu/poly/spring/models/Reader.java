@@ -25,7 +25,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Reader implements Serializable {
 
 	@Id
-	private String id;
+	private String readerId;
 
 	@Column
 	private String photo;
@@ -45,18 +45,18 @@ public class Reader implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "staffId")
-	private Staffs staff;
+	private Staff staff;
 
 	public Reader() {
 		super();
 	}
 
-	public String getId() {
-		return id;
+	public String getReaderId() {
+		return readerId;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setReaderId(String readerId) {
+		this.readerId = readerId;
 	}
 
 	public String getPhoto() {
@@ -107,12 +107,12 @@ public class Reader implements Serializable {
 		this.birthday = birthday;
 	}
 
-	public Staffs getStaff() {
+	public Staff getStaff() {
 		return staff;
 	}
 
-	public void setStaff(Staffs staff) {
+	public void setStaff(Staff staff) {
 		this.staff = staff;
 	}
-
+	
 }

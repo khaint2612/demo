@@ -26,7 +26,7 @@ public class AuthorControl {
 		model.addAttribute("author", new Author());
 		return "backend/author/add";
 	}
-
+	
 	@PostMapping("/save")
 	public String save(ModelMap model, Author author) {
 		authorService.save(author);

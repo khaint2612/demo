@@ -15,7 +15,7 @@ public class DemoApplication {
 	@Bean(name = "USER_BEAN")
 	public User setUser() {
 		User u = new User();
-		u.setUsername("admin");
+		u.setEmail("admin ");
 		u.setPassword("admin123");
 		return u;
 	}

@@ -8,7 +8,7 @@ public class UserDAO {
 	
 	public User findByUsername(String username) {
 		for (User user : ls) {
-			if (user.getUsername().equals(username)) {
+			if (user.getEmail().equals(username)) {
 				return user;
 			}
 		}
@@ -16,7 +16,7 @@ public class UserDAO {
 	}
 	public int update(User user) {
 		for (int i = 0; i < ls.size(); i++) {
-			if (ls.get(i).getUsername().equals(user.getUsername())) {
+			if (ls.get(i).getEmail().equals(user.getEmail())) {
 				ls.set(i, user);
 				return i;
 			}
@@ -24,7 +24,7 @@ public class UserDAO {
 		return -1;
 	}
 	public int save(User user) {
-		if (findByUsername(user.getUsername()) != null) {
+		if (findByUsername(user.getEmail()) != null) {
 			update(user);
 		}else {
 			ls.add(user);

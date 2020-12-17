@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.poly.spring.models.Reader;
-import edu.poly.spring.models.Staffs;
+import edu.poly.spring.models.Staff;
 import edu.poly.spring.repositories.ReaderRepository;
 import edu.poly.spring.repositories.StaffRepository;
 
@@ -21,8 +21,8 @@ public class ReaderServiceImp  implements ReaderService{
 	private StaffRepository staffrepository;
 
 	@Override
-	public List<Staffs> findAllStaff(){
-		return (List<Staffs>) staffrepository.findAll();
+	public List<Staff> findAllStaff(){
+		return (List<Staff>) staffrepository.findAll();
 	}
 	@Override
 	public List<Reader> findByNameLikeOrderByName(String name) {

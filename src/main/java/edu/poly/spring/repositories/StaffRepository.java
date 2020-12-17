@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import edu.poly.spring.models.Staffs;
+import edu.poly.spring.models.Staff;
 
 @Repository
-public interface StaffRepository  extends CrudRepository<Staffs, String>{
-	List<Staffs> findByNameLikeOrderByName(String name);
+public interface StaffRepository  extends CrudRepository<Staff, String>{
+	List<Staff> findByNameLikeOrderByName(String name);
 }

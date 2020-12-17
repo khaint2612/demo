@@ -69,6 +69,6 @@ public class PublishingCompanyControl {
 	public String find(ModelMap model, @RequestParam(defaultValue = "") String name) {
 		List<PublishingCompany> list = publishingCompanyService.findByNameLikeOrderByName(name);
 		model.addAttribute("publishingCompanies", list);
-		return "backend/publishingCompany/find";
+		return "backend/publishingCompany/list";
 	}
 }

@@ -22,7 +22,7 @@
 								<th:block th:if="${message!=null}">
 									<span th:text="${message}"></span>
 								</th:block>
-									<form th:action="@{/library/saveOrUpdate}" method="post" th:object="${library}">
+									<form th:action="@{/backend/library/saveOrUpdate}" method="post" th:object="${library}">
 										<div class="form-group">
 											<label for="id">Id</label><input id="id" type="text"
 												aria-describedby="name" class="form-control"
