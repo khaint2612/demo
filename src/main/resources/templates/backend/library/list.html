@@ -14,10 +14,24 @@
 					<div class="row">
 						<div class="col-md-12">
 							<div class="card">
+								<p>
+									<label th:text="'Hello: '+ ${session.Email}"></label><a
+										href="logout">Logout</a>
+								</p>
 								<div class="header">
-									<h4 class="title">Category</h4>
-									<p class="category">shows all available categories</p>
+									<h4 class="title">Library</h4>
+									<p class="category">shows all available</p>
 								</div>
+								<form style="margin-bottom: 20px; float: right;"
+									class="header col-md-6" th:action="@{/backend/reader/find}">
+									<div class="form-inline">
+										<div>
+											<input class="form-control" id="inputPassword2" type="text"
+												name="name" placeholder="Name"> <input
+												class="btn btn-primary" type="submit" value="Find">
+										</div>
+									</div>
+								</form>
 								<div class="content table-responsive table-full-width">
 									<table class="table table-striped">
 										<thead>
@@ -27,14 +41,14 @@
 											<th></th>
 										</thead>
 										<tbody>
-											<tr th:each="item: ${LIBRARY}" class="table-secondary">   
-      			<td th:text="${item.id}">ID</td>
-      			<td th:text="${item.name}">Name</td>
-      			<td>
-  					<a class="btn btn-primary btn-sm" th:href="@{'/library/edit/'+${item.id}}">Edit</a>|
-  					<a class="btn btn-danger btn-sm" th:href="@{'/library/delete/'+${item.id}}">Del</a>
-				</td>
-			</tr>
+											<tr th:each="item: ${LIBRARY}" class="table-secondary">
+												<td th:text="${item.id}">ID</td>
+												<td th:text="${item.name}">Name</td>
+												<td><a class="btn btn-primary btn-sm"
+													th:href="@{'/library/edit/'+${item.id}}">Edit</a>| <a
+													class="btn btn-danger btn-sm"
+													th:href="@{'/library/delete/'+${item.id}}">Del</a></td>
+											</tr>
 										</tbody>
 									</table>
 								</div>

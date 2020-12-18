@@ -37,7 +37,7 @@ public class ReaderController {
 	@RequestMapping("/list")
 	public String list(ModelMap model) {
 		model.addAttribute("reader", readerService.findAll());
-		return "backend/reader/list";
+		return "backend/reader/find";
 	}
 	@GetMapping("/add")
 	public String add(ModelMap model) {

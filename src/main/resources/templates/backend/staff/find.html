@@ -14,7 +14,10 @@
 					<div class="row">
 						<div class="col-md-12">
 							<div class="card">
-
+								<p>
+									<label th:text="'Hello: '+ ${session.Email}"></label><a
+										href="logout">Logout</a>
+								</p>
 								<form style="margin-bottom: 20px" th:action="@{/staff/find}">
 									<div class="form-inline">
 
@@ -53,7 +56,7 @@
 												<td th:text="${item.email}"></td>
 												<td th:text="${item.idCard}"></td>
 												<td><a class="btn btn-primary"
-													th:href="@{'/staff/edit/' + ${item.id}}">Edit</a>  <a
+													th:href="@{'/staff/edit/' + ${item.id}}">Edit</a> <a
 													class="btn btn-danger"
 													th:href="@{'/staff/delete/' + ${item.id}}">Delete</a></td>
 											</tr>

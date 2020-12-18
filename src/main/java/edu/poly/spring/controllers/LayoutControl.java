@@ -5,10 +5,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/backend/fragments/")
 public class LayoutControl {
-	@GetMapping("/index")
+	@GetMapping("/backend/fragments//index")
 	public String index() {
 		return "fragments/index";
 	}
+	@GetMapping("/")
+	public String login() {
+		return "login";
+	}
+	
 }
