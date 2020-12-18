@@ -4,34 +4,30 @@ import java.util.List;
 import java.util.Optional;
 
 import edu.poly.spring.models.User;
-import edu.poly.spring.models.UserAuth;
 
 public interface UserService {
 
-
 	void deleteAll();
 
-	void deleteAll(List<UserAuth> entities);
+	void deleteAll(List<User> entities);
 
-	void delete(UserAuth entity);
+	void delete(User entity);
 
-	void deleteById(Integer id);
+	void deleteById(String id);
 
 	long count();
 
-	List<UserAuth> findAllById(List<Integer> ids);
+	List<User> findAllById(List<String> ids);
 
-	List<UserAuth> findAll();
+	List<User> findAll();
 
-	boolean existsById(Integer id);
+	boolean existsById(String id);
 
-	Optional<UserAuth> findById(Integer id);
+	Optional<User> findById(String id);
 
-	List<UserAuth> saveAll(List<UserAuth> entities);
+	List<User> saveAll(List<User> entities);
 
-	UserAuth save(UserAuth entity);
+	User save(User entity);
 
-//	boolean checkLogin(String username, String password);
-	
-	
+	boolean checkLogin(String username, String password);
 }

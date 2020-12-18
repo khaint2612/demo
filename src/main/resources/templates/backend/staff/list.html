@@ -22,9 +22,7 @@
 									<table class="table table-striped">
 										<thead>
 											<tr>
-												<th>Picture
-												</td>
-												<th>ID
+												<th>Staff ID
 												</td>
 												<th>Name
 												</td>
@@ -44,18 +42,17 @@
 										</thead>
 										<tbody>
 										<tr th:each="item: ${staff}">
-											<td><img th:src="@{'/getimage/' + ${item.photo}}" width="80" height="70"></td>	
-											<td th:text="${item.id}"></td>
+											<td th:text="${item.staffId}"></td>
 											<td th:text="${item.name}"></td>
 											<td><span th:text="${item.gender}? 'Nam': 'Nu'"></span></td>
 											<td th:text="${item.address}"></td>
-											<td th:text="${item.phone}"></td>
+											<td th:text="${item.numberPhone}"></td>
 											<td th:text="${item.email}"></td>
-											<td th:text="${item.idcard}"></td>
+											<td th:text="${item.idCard}"></td>
 											<td><a class="btn btn-primary"
-												th:href="@{'/staff/edit/' + ${item.id}}">Edit</a> | <a
+												th:href="@{'/staff/edit/' + ${item.staffId}}">Edit</a> | <a
 												class="btn btn-danger"
-												th:href="@{'/staff/delete/' + ${item.id}}">Delete</a></td>
+												th:href="@{'/staff/delete/' + ${item.staffId}}">Delete</a></td>
 										</tr>
 										</tbody>
 									</table>

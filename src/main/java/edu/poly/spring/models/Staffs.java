@@ -14,19 +14,13 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Staffs")
 public class Staffs implements Serializable {
-
-
-	
 	@Id
-	@Column(length =10)
 	private String id;
-	@Column(length =100)	
+	@Column(length =50)
 	private String name;
 	private boolean gender;
-	@Column(length = 500)
+	@Column(length = 10)
 	private  String idcard;
-	@Column(length = 150)
-	private  String photo;
 	@Column(length = 500)
 	private  String address;
 	@Column(length =100)
@@ -36,26 +30,23 @@ public class Staffs implements Serializable {
 	
 	@OneToMany(mappedBy = "staff",cascade = CascadeType.ALL)
 	private Set<Reader> reader;
-	@OneToMany(mappedBy = "staff",cascade = CascadeType.ALL)
-	private Set<Bills> bills;
 
 	public Staffs() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Staffs(String id, String name,String photo, boolean gender, String idcard, String address, String email, String phone
-			) {
+	public Staffs(String id, String name, boolean gender, String idcard, String address, String email, String phone,
+			Set<Reader> reader) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.gender = gender;
 		this.idcard = idcard;
-		this.photo = photo;
 		this.address = address;
 		this.email = email;
 		this.phone = phone;
-		
+		this.reader = reader;
 	}
 
 	public String getId() {
@@ -121,20 +112,7 @@ public class Staffs implements Serializable {
 	public void setReader(Set<Reader> reader) {
 		this.reader = reader;
 	}
-	public String getPhoto() {
-		return photo;
-	}
-
-	public void setPhoto(String photo) {
-		this.photo = photo;
-	}
 	
-	public Set<Bills> getBills() {
-		return bills;
-	}
-
-	public void setBills(Set<Bills> bills) {
-		this.bills = bills;
-	}
+	
 
 }

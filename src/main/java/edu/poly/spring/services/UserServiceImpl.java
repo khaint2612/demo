@@ -7,81 +7,77 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.poly.spring.models.User;
-import edu.poly.spring.models.UserAuth;
-import edu.poly.spring.repositories.UserAuthRepository;
 import edu.poly.spring.repositories.UserRepository;
 
 @Service
 public class UserServiceImpl implements UserService {
 	
-
 	@Autowired
-	UserAuthRepository userAuthRepository;
+	private UserRepository userRepository;
 
 	@Override
-	public UserAuth save(UserAuth entity) {
-		return userAuthRepository.save(entity);
+	public User save(User entity) {
+		return userRepository.save(entity);
 	}
 
 	@Override
-	public List<UserAuth> saveAll(List<UserAuth> entities) {
-		return (List<UserAuth>) userAuthRepository.saveAll(entities);
+	public List<User> saveAll(List<User> entities) {
+		return (List<User>) userRepository.saveAll(entities);
 	}
 
 	@Override
-	public Optional<UserAuth> findById(Integer id) {
-		return userAuthRepository.findById(id);
+	public Optional<User> findById(String id) {
+		return userRepository.findById(id);
 	}
 
 	@Override
-	public boolean existsById(Integer id) {
-		return userAuthRepository.existsById(id);
+	public boolean existsById(String id) {
+		return userRepository.existsById(id);
 	}
 
 	@Override
-	public List<UserAuth> findAll() {
-		return (List<UserAuth>) userAuthRepository.findAll();
+	public List<User> findAll() {
+		return (List<User>) userRepository.findAll();
 	}
 
 	@Override
-	public List<UserAuth> findAllById(List<Integer> ids) {
-		return (List<UserAuth>) userAuthRepository.findAllById(ids);
+	public List<User> findAllById(List<String> ids) {
+		return (List<User>) userRepository.findAllById(ids);
 	}
 
 	@Override
 	public long count() {
-		return userAuthRepository.count();
+		return userRepository.count();
 	}
 
 	@Override
-	public void deleteById(Integer id) {
-		userAuthRepository.deleteById(id);
+	public void deleteById(String id) {
+		userRepository.deleteById(id);
 	}
 
 	@Override
-	public void delete(UserAuth entity) {
-		userAuthRepository.delete(entity);
+	public void delete(User entity) {
+		userRepository.delete(entity);
 	}
 
 	@Override
-	public void deleteAll(List<UserAuth> entities) {
-		userAuthRepository.deleteAll(entities);
+	public void deleteAll(List<User> entities) {
+		userRepository.deleteAll(entities);
 	}
 
 	@Override
 	public void deleteAll() {
-		userAuthRepository.deleteAll();
+		userRepository.deleteAll();
 	}
-//	public boolean checkLogin(String username, String password) {
-//		Optional<UserAuth> optionalUser = findByUsername(username);
-//		if (optionalUser.isPresent() && optionalUser.get().getPassword().equals(password)) {
-//			return true;
-//		}
-//		return false;
-//	}
-//	private Optional<UserAuth> findByUsername(String username) {
-//		
-//		return Optional.of(userAuthRepository.findByUsername(username));
-//	}
+	
+	@Override
+	public boolean checkLogin(String username, String password) {
+		// TODO Auto-generated method stub
+		Optional<User> optionalUser = findById(username);
+		if (optionalUser.isPresent() && optionalUser.get().getPassword().equals(password)) {
+			return true;
+		}
+		return false;
+	}
 
 }

@@ -8,8 +8,6 @@
             <a th:href="@{/backend/book/list}" class="simple-text">
                 Library Manager
             </a>
-            <a th:text="${session.USERNAME}"/>
-            <a th:href='@{/logout}'>Logout</a>
         </div>
         <ul class="nav">
             <li>
@@ -22,18 +20,6 @@
                 <a th:href="@{/backend/book/add}">
                     <i class="ti-plus"></i>
                     <p>Add Book</p>
-                </a>
-            </li>
-            <li>
-                <a th:href="@{/backend/bill/list}">
-                    <i class="ti-book"></i>
-                    <p>Bills</p>
-                </a>
-            </li>
-            <li>
-                <a th:href="@{/backend/bill/add}">
-                    <i class="ti-plus"></i>
-                    <p>Add Bill</p>
                 </a>
             </li>
             <li>
