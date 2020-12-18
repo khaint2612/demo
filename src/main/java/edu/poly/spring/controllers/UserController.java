@@ -1,5 +1,7 @@
 package edu.poly.spring.controllers;
 
+import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
@@ -14,52 +16,74 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import edu.poly.spring.models.Role;
+import edu.poly.spring.models.Staffs;
 import edu.poly.spring.models.UserAuth;
-
+import edu.poly.spring.repositories.RoleRepository;
+import edu.poly.spring.services.RoleService;
 import edu.poly.spring.services.UserService;
 
 
 @Controller
+@RequestMapping("/user")
 public class UserController {
 	
 	@Autowired
 	UserService userService;
 	
-//	@Autowired
-//	User _userBean;
-	
-	@GetMapping("/adduser")
+	@Autowired
+	RoleRepository roleRepository;
+	@Autowired
+	RoleService roleService;
+	@GetMapping("/add")
 	public String addOrEdit(ModelMap model) {
 		UserAuth u = new UserAuth();
 //		u.setUsername("NamNV");
-		model.addAttribute("USER", u);
-		model.addAttribute("ACTION", "/saveOrUpdate");
-		return "register-user";
+		model.addAttribute("USERM", u);
+		model.addAttribute("ACTION", "/user/saveOrUpdate");
+		return "backend/user/addOrEdit";
+	}
+	@GetMapping("/register")
+	public String addOrEdit2(ModelMap model) {
+		UserAuth u = new UserAuth();
+//		u.setUsername("NamNV");
+		model.addAttribute("USERM", u);
+		model.addAttribute("ACTION", "/user/register2");
+		return "login";
+	}
+	@PostMapping("/register2")
+	public String register2(ModelMap model, @ModelAttribute("USERM") UserAuth username) {
+		HashSet<Role> roles = new HashSet<>();
+        roles.add(roleRepository.findByName("ROLE_MEMBER"));
+        username.setRoles(roles);
+		userService.save(username);
+		return "login";
 	}
 	@PostMapping("/saveOrUpdate")
 	public String saveOrUpdate(ModelMap model, @ModelAttribute("USER") UserAuth username) {
 //		UserDAO dao = new UserDAO();
 //		dao.save(user);
 //		System.out.println("size"+dao.getAll().size());
+		HashSet<Role> roles = new HashSet<>();
+        roles.add(roleRepository.findByName("ROLE_ADMIN"));
+        username.setRoles(roles);
 		userService.save(username);
-		return "register-user";
+		return "backend/user/addOrEdit";
 	}
 	@RequestMapping("list")
 	public String list(ModelMap model,HttpSession session) {
 //		UserDAO dao = new UserDAO();
 //		model.addAttribute("USERS", dao.getAll());
-		if (session.getAttribute("USERNAME") !=null) {
+//		if (session.getAttribute("USERNAME") !=null) {
 			model.addAttribute("USERS",userService.findAll());
-			return "view-user";
-		}
-		
-		return "login";
+			return "backend/user/view-user";
+//		}
+//		
+//		return "login";
 	}
 	@RequestMapping("/edit/{id}")
 	public String edit(ModelMap model,
 			@PathVariable(name="id") Integer id) {
-//		UserDAO dao = new UserDAO();
-//		User u = dao.findByUsername(username);
 
 		Optional<UserAuth> u = userService.findById(id);
 		if(u.isPresent()) {
@@ -68,17 +92,16 @@ public class UserController {
 			model.addAttribute("USER", new UserAuth());
 		}
 		model.addAttribute("ACTION", "/saveOrUpdate");
-		return "register-user";
+		return "backend/user/addOrEdit";
 	}
 	@RequestMapping("/delete/{id}")
 	public String delete(ModelMap model,
 			@PathVariable(name="id") Integer id) {
-//		UserDAO dao = new UserDAO();
-//		dao.delete(username);
+
 		userService.deleteById(id);
 		model.addAttribute("USERS", userService.findAll());
 		
-		return "view-user";
+		return "backend/user/view-user";
 	}
 	
 //	@PostMapping("/checklogin")

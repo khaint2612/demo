@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import edu.poly.spring.models.Staffs;
 import edu.poly.spring.models.User;
 import edu.poly.spring.models.UserAuth;
 import edu.poly.spring.repositories.UserAuthRepository;
@@ -17,7 +18,7 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	UserAuthRepository userAuthRepository;
-
+	
 	@Override
 	public UserAuth save(UserAuth entity) {
 		return userAuthRepository.save(entity);

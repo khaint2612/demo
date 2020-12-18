@@ -1,39 +1,109 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-        <title>JSP Page</title>
-    </head>
-    <body>
-        
-        <div class="container" style="margin-top: 50px;">
-            <div class="row" style="border: 1px darkgrey solid; border-radius: 10px;width: 50%; margin: 0 auto; padding: 20px;" >
-                <div class="col-sm-12">
-                <h3>Login</h3>
-                <form th:action="@{/login}" method="post">
-                    <div class="form-group">
-                        <label>UserName</label>
-                        <input type="text" class="form-control" name="username" placeholder="Enter UserName">
-                    </div>
-                    <div class="form-group">
-                        <label>Password:</label>
-                        <input type="password" class="form-control" name="password" placeholder="Enter password">
-                    </div>
-                    <div class="checkbox">
-                        <label><input type="checkbox"> Remember me</label>
-                    </div>
-                    <p th:if="${param.error}" class="error">Invalid email or password</p>
-        			<p th:if="${param.logout}" class="success">You have been logged out</p>
-                    <p style="color: red" th:text="${ERROR}"></p>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                    <button type="reset" class="btn btn-primary">Cancel</button>
-                    <p style="margin: 10px; font-size: 16px;"><a href="register-user.jsp">Register</a></p>
-                </form>
-                </div>
-            </div>
-        </div>
-    </body>
+<!-- Created By CodingNepal -->
+<html xmlns:th="http://www.thymeleaf.org" dir="ltr">
+
+<head>
+<meta charset="utf-8">
+<!-- Somehow I got an error, so I comment the title, just uncomment to show -->
+<!-- <title>Login & Signup Form | CodingNepal</title> -->
+<link rel="stylesheet" th:href="@{../css/login.css}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+	<div class="wrapper">
+		<div class="title-text">
+			<div class="title login">Login Form</div>
+			<div class="title signup" th:href="@{/user/register}">Signup
+				Form</div>
+		</div>
+		<div class="form-container">
+			<div class="slide-controls">
+				<input type="radio" name="slide" id="login" checked> <input
+					type="radio" name="slide" id="signup"> <label for="login"
+					class="slide login">Login</label> <label for="signup"
+					class="slide signup">Signup</label>
+				<div class="slider-tab"></div>
+			</div>
+			<div class="form-inner">
+				<form th:action="@{/login}" class="login" method="post">
+					<div class="field">
+						<input type="text" name="username" placeholder="Enter UserName"
+							required>
+					</div>
+					<div class="field">
+						<input type="password" name="password"
+							placeholder="Enter Password" required>
+					</div>
+					<div class="pass-link">
+						<a href="#">Forgot password?</a>
+					</div>
+					<div class="field btn">
+						<div class="btn-layer"></div>
+						<input type="submit" value="Login">
+					</div>
+					<div class="signup-link">
+						<a th:href="@{/user/register}">Signup now</a>
+					</div>
+				</form>
+				<form th:action="@{/user/register2}" class="signup"
+					th:object="${USERM}" method="post">
+					<div class="field">
+						<input type="text" th:field="*{username}" name="username"
+							placeholder="Enter Username" required>
+					</div>
+					<div class="field">
+						<input type="password" th:field="*{password}" name="password"
+							placeholder="Enter Password" required>
+					</div>
+					<div class="field">
+						<input type="text" th:field="*{fullname}" name="Fullname"
+							placeholder="Enter Fullname" required>
+					</div>
+					<div class="field">
+						<input type="text" th:field="*{age}" name="Age"
+							placeholder="Enter Age" required>
+					</div>
+					<!-- <div class="radio">
+						value = 1 ==> Nam| 0 ==>Nu
+						<div class="slide-controls">
+							<input type="radio" th:field="*{gender}"
+								name="slide" value="1" id="gender1">
+							<input
+								type="radio" th:field="*{gender}" name="slide"
+								checked="checked" value="0" id="gender2">
+								<label for="login" class="slide login">Login</label>
+								<label for="signup" class="slide signup">Signup</label>
+						</div>
+					</div> -->
+					<div class="field btn">
+						<div class="btn-layer"></div>
+						<input type="submit" value="Signup">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script>
+        const loginText = document.querySelector(".title-text .login");
+        const loginForm = document.querySelector("form.login");
+        const loginBtn = document.querySelector("label.login");
+        const signupBtn = document.querySelector("label.signup");
+        const signupLink = document.querySelector("form .signup-link a");
+        signupBtn.onclick = (() => {
+            loginForm.style.marginLeft = "-50%";
+            loginText.style.marginLeft = "-50%";
+        });
+        loginBtn.onclick = (() => {
+            loginForm.style.marginLeft = "0%";
+            loginText.style.marginLeft = "0%";
+        });
+        signupLink.onclick = (() => {
+            signupBtn.click();
+            return false;
+        });
+    </script>
+
+</body>
+
 </html>

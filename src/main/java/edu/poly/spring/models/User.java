@@ -24,13 +24,13 @@ public class User implements Serializable {
 	private Integer age;
 	
 	@Column(name = "gender")
-	private boolean gender;
+	private Boolean gender;
 
 	public User() {
 		super();
 	}
 
-	public User(String username, String password, String fullname, Integer age, boolean gender) {
+	public User(String username, String password, String fullname, Integer age, Boolean gender) {
 		super();
 		this.username = username;
 		this.password = password;
@@ -75,7 +75,7 @@ public class User implements Serializable {
 		return gender;
 	}
 
-	public void setGender(boolean gender) {
+	public void setGender(Boolean gender) {
 		this.gender = gender;
 	}
 	

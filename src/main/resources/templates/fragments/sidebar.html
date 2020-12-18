@@ -8,8 +8,10 @@
             <a th:href="@{/backend/book/list}" class="simple-text">
                 Library Manager
             </a>
-            <a th:text="${session.USERNAME}"/>
-            <a th:href='@{/logout}'>Logout</a>
+            <form th:action="@{/logout}">
+            Hello : <span th:utext="${#request.userPrincipal.name}"></span>
+            <input class="form-control"
+			 type="submit" value="Logout" ></form>			  			
         </div>
         <ul class="nav">
             <li>
@@ -85,13 +87,13 @@
                 </a>
             </li>
             <li>
-                <a th:href="@{/list}">
+                <a th:href="@{/user/list}">
                     <i class="ti-book"></i>
                     <p>User</p>
                 </a>
             </li>
             <li>
-                <a th:href="@{/}">
+                <a th:href="@{/user/add}">
                     <i class="ti-plus"></i>
                     <p>Add User</p>
                 </a>
